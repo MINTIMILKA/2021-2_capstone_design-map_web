@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>지역탐색 앱</title>
+		<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fzpffrru7i"></script>
+		<style>
+			div {
+				border:1px solid #ccc; /*레이아웃 외곽선의 두께 설정*/ 
+			}
+			#container {
+				width: 0 auto;
+				margin:0 auto; 
+			}
+			#header {
+				padding: 10px; /* 레이아웃 바깥으로부터의 여백설정, 내부의 여백설정은 margin */
+				margin-bottom:10px;
+			}
+			#map {
+				width: 48.7%; /*레이아웃의 가로길이 */
+				height: 600px;
+				float: left;;/*레이아웃이 왼쪽부터 시작되게 붙이기*/
+				margin-bottom: 20px; /*외곽선이 밑으로 부터 얼마나 떨어져 있는가?*/
+			}
+			#left-sidebar {
+				width: 25%;
+				height: 600px;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			
+			#right-sidebar {
+				width: 25%; 
+				height: 600px;
+				float: right; 
+				margin-bottom: 20px;  
+			}
+			#footer {
+				clear:both;	 /*사진 주위로 글이 안붙음, 줄바꿈됨*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<!--헤더 출력-->
+			<div id="header">
+				<h1>로그인, 초기화 화면 버튼 생성</h1>
+			</div>
+			<!--레프트-업 사이드바 출력-->
+			<div id="left-sidebar">
+				<h2>지역을 설정해주세요</h2>
+				<br><h3>서울, 인천, 대구 등 지역명 나열된 버튼 생성</h3>
+				<br><h3>아래에는 통계자료목록 나열</h3>
+			</div> 
+			
+			<!--지도 출력-->
+			<div id="map"></div> 
+			<script>
+				var mapOptions = {
+					center: new naver.maps.LatLng(37.3595704, 127.105399),
+					zoom: 10
+				};
+				var map = new naver.maps.Map('map', mapOptions);
+				</script>
+				<!--레프트 라이트바 출력-->
+			<div id="right-sidebar">
+				<h2>그래프 출력</h2>
+				<br><h2>아래에는 막대그래프, 원형그래프, 꺾은선그래프등 나열</h2>
+				<ul>
+				
+				</ul>
+			<!--푸터-->
+			</div>
+			<div id="footer">
+				<h2>footer</h2>
+
+			</div>
+		</div>
+	</body>
+</html>
