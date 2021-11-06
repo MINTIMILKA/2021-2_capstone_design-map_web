@@ -4,7 +4,7 @@
 <statistical_data>
     <api name="성, 연령 및 세대구성별 인구 - 시군구 (년 2015~2020)">
         <data:dsd>
-            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1IN1509/2/1/20211022015127&type=DSD&prdSe=Y&version=v2_1
+            https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1IN1509/2/1/20211022015127&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1
         </data:dsd>
         <data:structure_specific>
             https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1IN1509/2/1/20211022015127&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1
