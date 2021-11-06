@@ -1,0 +1,58 @@
+<statistical_data>
+    <api>
+        <data:dsd>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1IN1509/2/1/20211022015127&type=DSD&prdSe=Y&version=v2_1
+        </data:dsd>
+        <data:structure_specific>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1IN1509/2/1/20211022015127&type=StructureSpecific&prdSe=Y&newEstPrdCnt=1&version=v2_1
+        </data:structure_specific>
+    </api>
+    <api>
+        <data:dsd>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1B08024/2/1/20211003231143&type=DSD&prdSe=Y&version=v2_1
+        </data:dsd>
+        <data:structure_specific>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1B08024/2/1/20211003231143&type=StructureSpecific&prdSe=Y&newEstPrdCnt=1&version=v2_1
+        </data:structure_specific>
+    </api>
+    <api>
+        <data:dsd>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL8901/2/1/20211031195547&type=DSD&prdSe=Y&version=v2_1
+        </data:dsd>
+        <data:structure_specific>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL8901/2/1/20211031195547&type=StructureSpecific&prdSe=Y&newEstPrdCnt=1&version=v2_1
+        </data:structure_specific>
+    </api>
+    <api>
+        <data:dsd>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL8801/2/1/20211031214107&type=DSD&prdSe=Y&version=v2_1
+        </data:dsd>
+        <data:structure_specific>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL8801/2/1/20211031214107&type=StructureSpecific&prdSe=Y&newEstPrdCnt=1&version=v2_1
+        </data:structure_specific>
+    </api>
+    <api>
+        <data:dsd>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL3001/2/1/20211031215410&type=DSD&prdSe=Y&version=v2_1
+        </data:dsd>
+        <data:structure_specific>
+            https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL3001/2/1/20211031215410&type=StructureSpecific&prdSe=Y&newEstPrdCnt=1&version=v2_1
+        </data:structure_specific>
+    </api>
+    <api>
+        <data:dsd>
+            
+        </data:dsd>
+        <data:structure_specific>
+            
+        </data:structure_specific>
+    </api>
+    <api>
+        <data:dsd>
+            
+        </data:dsd>
+        <data:structure_specific>
+            
+        </data:structure_specific>
+    </api>
+</statistical_data>
