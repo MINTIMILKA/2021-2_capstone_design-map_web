@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root xmlns:data="statistical_data">
-
     <statistical_data>
         <api name="">
             <data:dsd></data:dsd>
             <data:structure_specific></data:structure_specific>
         </api>
     </statistical_data>
-
 </root>
