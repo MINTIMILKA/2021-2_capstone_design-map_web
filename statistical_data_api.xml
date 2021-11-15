@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root xmlns:data="statistical_data">
     <statistical_data>
+        <api name="기온(시도)">
+            <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL9801/2/1/20211031195405&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL9801/2/1/20211031195405&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+        </api>
+        <api name="	강수량(시도)">
+            <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL9901/2/1/20211031195435&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL9901/2/1/20211031195435&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+        </api>
+        <api name="	예금은행대출금액(시도)">
+            <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL6801E/2/1/20211031195453&amp;type=DSD&amp;prdSe=M&amp;version=v2_1</data:dsd>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL6801E/2/1/20211031195453&amp;type=StructureSpecific&amp;prdSe=M&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+        </api>
+        <api name="	의료기관 수술인원(시도)">
+            <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8101E/2/1/20211031195508&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8101E/2/1/20211031195508&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+        </api>
+        <api name="대학교 교원수(시도/시/군/구)">
+            <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8901/2/1/20211031195547&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8901/2/1/20211031195547&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+        </api>
+        <api name="대학교 학생수(시도/시/군/구)">
+            <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8801/2/1/20211031214107&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8801/2/1/20211031214107&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+        </api>
         <api name="화재발생건수(시도/시/군/구)">
             <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8601/2/1/20211114184952&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
             <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL8601/2/1/20211114184952&amp;type=StructureSpecific&amp;prdSe=Y&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
