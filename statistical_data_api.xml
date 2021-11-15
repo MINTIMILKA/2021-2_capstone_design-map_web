@@ -43,7 +43,7 @@
         </api>
         <api name="수출액(시도)">
             <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL6901/2/1/20211114185501&amp;type=DSD&amp;prdSe=M&amp;version=v2_1</data:dsd>
-            <data:structure_specific>ttps://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL6901/2/1/20211114185501&amp;type=StructureSpecific&amp;prdSe=M&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
+            <data:structure_specific>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL6901/2/1/20211114185501&amp;type=StructureSpecific&amp;prdSe=M&amp;newEstPrdCnt=1&amp;version=v2_1</data:structure_specific>
         </api>
         <api name="운수업종사자수(시도/시/군/구)">
             <data:dsd>https://kosis.kr/openapi/statisticsData.do?method=getList&amp;apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&amp;format=sdmx&amp;jsonVD=Y&amp;userStatsId=kjkj0581/101/DT_1YL6001/2/1/20211114185622&amp;type=DSD&amp;prdSe=Y&amp;version=v2_1</data:dsd>
