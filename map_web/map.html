@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-		<title>지역탐색 앱</title>
+		<title>한눈에 보는 지역정보</title>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"
   		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> <!--AJAX를 사용하기 위한 jQUERY 호출-->
@@ -14,16 +14,85 @@
 	</head>
 	<body>
 		<div id="container">
+			
 			<!--헤더 출력-->
 			<div id="header">
-				<h1>로그인, 초기화 화면 버튼 생성</h1>
+				<h1>한눈에 보는 지역정보</h1>
 			</div>
+
 			<!--레프트-업 사이드바 출력-->
 			<div id="left-sidebar">
-				<h2>지역을 설정해주세요</h2>
-				<br><h3>서울, 인천, 대구 등 지역명 나열된 버튼 생성</h3>
-				<br><h3>아래에는 통계자료목록 나열</h3>
-			</div> 
+				<!-- 
+					data-statistical_data: 해당 지역의 통계 데이터 값 
+				 -->
+				<div class="local_button">
+					<div>
+						<button type="submit" id="Seoul" data-code_id="" data-statistical_data="">서울</button>
+						<button type="submit" id="Busan" data-statistical_data="">부산</button>
+						<button type="submit" id="Daegu" data-statistical_data="">대구</button>
+						<button type="submit" id="Incheon" data-statistical_data="">인천</button>
+					</div>
+					<div>
+						<button type="submit" id="Gwangju" data-statistical_data="">광주</button>
+						<button type="submit" id="Daejeon" data-statistical_data="">대전</button>
+						<button type="submit" id="Ulsan" data-statistical_data="">울산</button>
+						<button type="submit" id="Sejong" data-statistical_data="">세종</button>
+					</div>
+				</div>
+
+				<div class="statistical_list">
+					<!-- 
+						통계 리스트 번호는 버튼의 statistical_button_num 값에 저장됨 
+						ex: 통계 23번은 버튼 3번의 statistical_button_num="23"
+					 -->
+
+					 <!-- 버튼 이벤트 가져오기 -->
+					<script src="js/button_event.js"></script>
+
+					<div id="button_1">
+						<button type="submit" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
+						<data id="statistical_button_data_1" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+					</div>
+					<div id="button_2">
+						<button type="submit" id="statistical_button_2" onclick="get_subtitle(2)" data-statistical_button_num="2"> </button>
+						<data id="statistical_button_data_2" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+					</div>
+					<div id="button_3">
+						<button type="submit" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
+						<data id="statistical_button_data_3" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+					</div>
+					<div id="buttont_4">
+						<button type="submit" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
+						<data id="statistical_button_data_4" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+					</div>
+					<div id="button_5">
+						<button type="submit" id="statistical_button_5" onclick="get_subtitle(5)" data-statistical_button_num="5"> </button>
+						<data id="statistical_button_data_5" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+					</div>
+
+					<!-- 버튼 초기화 -->
+					<script>address_parse_button_init(5, 0);</script>
+
+					<div id="list_order" data-list_num="0">
+						<!-- 
+							통계 리스트의 순서 번호는 list_num에 저장됨 
+							(list_back: list_num=-1, list_next: list_num=+1)
+						 -->
+
+						<!-- 
+							문자열 '<<'는 &lt;, '>>'는 &gt;으로 표현됨
+							list_back, list_next의 변수(5): 버튼의 수
+						-->
+						<button type="submit" id="list_back" onclick="list_back(5)">&lt;&lt;</button>
+						<button type="submit" id="list_next" onclick="list_next(5)">&gt;&gt;</button>
+					</div>
+				</div>
+
+				<div id="subtitle_list"></div>
+
+				<!-- 지역 선택 후 데이터 불러오기 -->
+				<script src="js/xml_parser.js"></script>
+			</div>
 			
 			<!--지도 출력-->
 			<div id="map"></div> 
@@ -45,8 +114,8 @@
 				</script>
 				<canvas id="myChart"></canvas>
 				<script src="js/list.js"></script>
-				<!--푸터-->	
 			</div>
+			<!--푸터-->	
 			<div id="footer">
 				<h2>footer</h2>
 
