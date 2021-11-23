@@ -29,22 +29,6 @@
 
 			<!--레프트-업 사이드바 출력-->
 			<div id="left-sidebar">
-				<!-- 
-					data-statistical_data: 해당 지역의 통계 데이터 값 
-				 -->
-				<div class="local_button">
-					
-					<div>
-						<button type="submit" class="button" id="Seoul" data-code_id="" data-statistical_data="">서울</button>
-						<button type="submit" class="button button2" id="Busan" data-statistical_data="">부산</button>
-						<button type="submit" class="button button3" id="Daegu" data-statistical_data="">대구</button>
-						<button type="submit" class="button button4" id="Incheon" data-statistical_data="">인천</button>
-						<button type="submit" class="button button5" id="Gwangju" data-statistical_data="">광주</button>
-						<button type="submit" class="button button6" id="Daejeon" data-statistical_data="">대전</button>
-						<button type="submit" class="button button7" id="Ulsan" data-statistical_data="">울산</button>
-						<button type="submit" class="button button8" id="Sejong" data-statistical_data="">세종</button>
-					</div>
-				</div>
 
 				<div class="statistical_list">
 					<!-- 
@@ -54,7 +38,10 @@
 
 					 <!-- 버튼 이벤트 가져오기 -->
 					<script src="js/button_event.js"></script>
-
+					
+					<br>
+					<p>통계 제목 리스트</p>
+					
 					<div id="button_1">
 						<button type="submit" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
 						<data id="statistical_button_data_1" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
@@ -67,7 +54,7 @@
 						<button type="submit" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
 						<data id="statistical_button_data_3" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
-					<div id="buttont_4">
+					<div id="button_4">
 						<button type="submit" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
 						<data id="statistical_button_data_4" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
@@ -94,10 +81,48 @@
 					</div>
 				</div>
 
+				<!-- 
+					동적으로 추가될 부제목
+					
+					부제목 버튼 id: subtitle_button
+					부제목 버튼 번호: data-subtitle_button_num
+				-->
+				<br>
+				<p>통계 부제목 리스트</p>
+
 				<div id="subtitle_list"></div>
 
-				<!-- 지역 선택 후 데이터 불러오기 -->
-				<script src="js/xml_parser.js"></script>
+				<!-- 
+					지역 선택 후 통계 데이터 불러오기 
+
+					부제목 버튼을 클릭하면 해당 통계 자료가 statistical_data에 저장됨 
+					nation_data: 전국 평균 데이터
+					Seoul_data: 서울 데이터
+					Busan_data: 부산 데이터
+					Daegu_data: 대구 데이터
+					Incheon_data: 인천 데이터 
+					Gwangju_data: 광주 데이터
+					Daejeon_data: 대전 데이터 
+					Ulsan_data: 울산 데이터 
+					Sejong_data: 세종 데이터 
+				-->
+				<data id="local_name_id" data-nation_name_id="" data-seoul_name_id="", data-busan_name_id="" data-daegu_name_id="" data-incheon_name_id="" data-gwangju_name_id="" data-daejeon_name_id="" data-ulsan_name_id="" data-sejong_name_id=""></data>
+				<data id="statistical_data" data-local_id_name="" data-nation_data="0" data-seoul_data="0" data-busan_data="0" data-daegu_data="0" data-incheon_data="0" data-gwangju_data="0" data-daejeon_data="0" data-ulsan_data="0" data-sejong_data="0"></data>
+				
+				<!-- 테스트 출력 항목은 지워도 됨 -->
+				<br>
+				<button onclick="test_function()">데이터 확인</button>
+				<p id="test1">11</p>
+				<p id="test2">22</p>
+
+				<!-- 데이터 출력 테스트 -->
+				<script>
+					function test_function()
+					{
+						document.getElementById("test1").innerText = "서울 id: " + document.getElementById("local_name_id").dataset.seoul_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.seoul_data;
+						document.getElementById("test2").innerText = "대전 id: " + document.getElementById("local_name_id").dataset.daejeon_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.daejeon_data;
+					}
+				</script>
 			</div>
 			
 			<!--차트 출력-->
