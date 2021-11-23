@@ -83,13 +83,13 @@ function address_parse_button_init(button_count, statistical_button_num)
                     //버튼 텍스트 지정 
                     document.getElementById("statistical_button_" + i).innerText = xml_name;
 
-                    document.getElementById("statistical_button_data_" + i).dataset.statistical_button_name = xml_name;
-                    document.getElementById("statistical_button_data_" + i).dataset.statistical_button_dsd_url = xml_dsd_url;
-                    document.getElementById("statistical_button_data_" + i).dataset.statistical_button_structure_specific_url = xml_structure_specific_url;
+                    document.getElementById("statistical_button_data_" + i).setAttribute("data-statistical_button_name", xml_name);
+                    document.getElementById("statistical_button_data_" + i).setAttribute("data-statistical_button_dsd_url", xml_dsd_url);
+                    document.getElementById("statistical_button_data_" + i).setAttribute("data-statistical_button_structure_specific_url", xml_structure_specific_url);
 
-                    //console.log(document.getElementById("structure_data").dataset.name);
-                    //console.log(document.getElementById("structure_data").dataset.dsd);
-                    //console.log(document.getElementById("structure_data").dataset.structure_specific);
+                    //console.log(document.getElementById("statistical_button_data_" + i).dataset.statistical_button_name);
+                    //console.log(document.getElementById("statistical_button_data_" + i).dataset.statistical_button_dsd_url);
+                    //console.log(document.getElementById("statistical_button_data_" + i).dataset.statistical_button_structure_specific_url);
                 }
                 else
                 {
@@ -133,6 +133,7 @@ function get_subtitle(button_num)
             var xml = xml_dsd_parser.responseXML;
 
             var code_list = xml.getElementsByTagName("structure:Codelist");
+            var concept_list = xml.getElementsByTagName("structure:Concept");
 
             //이전 부제목 버튼 제거
             if(subtitle_list.childNodes.length > 0)
@@ -156,6 +157,9 @@ function get_subtitle(button_num)
                 }
             }
             
+            //부제목 버튼 번호 
+            var subtitle_button_num = 0;
+
             //부제목 리스트 구하기 
             for(var i=0;i<code_list.length;i++)
             {
@@ -178,7 +182,219 @@ function get_subtitle(button_num)
                             subtitle_button.appendChild(subtitle_name);
                             subtitle_button_div.appendChild(subtitle_button);
                             subtitle_list.appendChild(subtitle_button_div);
+
+                            //부제목 버튼 속성 변경 
+                            subtitle_button_num++;
+                            subtitle_button.setAttribute("id", "subtitle_button_" + subtitle_button_num);
+                            subtitle_button.setAttribute("data-subtitle_item_id_num", code_id);
+                            subtitle_button.setAttribute("data-title_button_num", button_num);
+                            subtitle_button.setAttribute("data-subtitle_button_num", subtitle_button_num);
+                            subtitle_button.setAttribute("onClick", "get_statistical_data(" + subtitle_button_num + ")");
                         }
+                    }
+                }
+                //지역 이름별 아이디 구하기
+                if(code_list[i].childNodes[0].textContent == "행정구역별")
+                {
+                    for(var j=0;j<code_list[i].childNodes.length;j++)
+                    {
+                        for(var k=0;k<code_list[i].childNodes[j].childNodes.length;k++)
+                        {
+                            //console.log(code_list[i].childNodes[j].getAttribute("id"));
+                            //console.log(code_list[i].childNodes[j].childNodes[k].textContent);
+
+                            if(code_list[i].childNodes[j].childNodes[k].textContent == "전국(평균)")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-nation_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "서울특별시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-seoul_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "부산광역시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-busan_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "대구광역시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-daegu_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "인천광역시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-incheon_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "광주광역시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-gwangju_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "대전광역시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-daejeon_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "울산광역시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-ulsan_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                            else if(code_list[i].childNodes[j].childNodes[k].textContent == "세종특별자치시")
+                            {
+                                document.getElementById("local_name_id").setAttribute("data-sejong_name_id", code_list[i].childNodes[j].getAttribute("id"))
+                            }
+                        }
+                        //console.log("--");
+                    }
+                }
+            }
+
+            //지역 아이템 이름 구하기(C_A, C_B, C_C...)
+            for(var i=0;i<concept_list.length;i++)
+            {
+                //console.log(concept_list[i].getAttribute("id"));
+                //console.log(concept_list[i].childNodes[0].textContent);
+                if(concept_list[i].childNodes[0].textContent == "행정구역별")
+                {
+                    document.getElementById("statistical_data").setAttribute("data-local_id_name", concept_list[i].getAttribute("id"));
+                    break;
+                }
+                else
+                {
+                    document.getElementById("statistical_data").setAttribute("data-local_id_name", "C_A");
+                }
+            }
+        }
+    }
+}
+
+//xml structure_specific 데이터 
+function get_statistical_data(button_num)
+{
+    var xml_structure_specific_parser = new XMLHttpRequest();
+
+    var title_button_num = document.getElementById("subtitle_button_" + button_num).dataset.title_button_num;
+    //console.log("title_button_num: " + title_button_num);
+    var xml_structure_specific_url_text = document.getElementById("statistical_button_data_" + title_button_num).dataset.statistical_button_structure_specific_url;
+
+    //var dsd_url_text = "https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL9801/2/1/20211117214224&type=DSD&prdSe=Y&version=v2_1";
+
+    xml_structure_specific_parser.open('GET', xml_structure_specific_url_text, true);
+    xml_structure_specific_parser.send();
+
+    var structure_specific_LOCAL, structure_specific_FREQ, structure_specific_ITEM, structure_specific_OBS_VALUE;
+
+    //console.log("xml_structure_specific_url_text: " + xml_structure_specific_url_text);
+
+    xml_structure_specific_parser.onreadystatechange = function()
+    {
+        //서버가 성공적으로 연결될 때
+        if((xml_structure_specific_parser.readyState == 4) && (xml_structure_specific_parser.status >= 200) && (xml_structure_specific_parser.status < 300))
+        {
+            var xml_structure_specific = xml_structure_specific_parser.responseXML;
+
+            var structure_specific_series_data = xml_structure_specific.getElementsByTagName("Series");
+            //var structure_specific_obs_data = xml_structure_specific.getElementsByTagName("Series").childNodes[0];
+
+            //console.log("length: " + structure_specific_series_data.length);
+
+            //console.log("button_num: " + button_num);
+            //console.log(document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num);
+
+            //지역 데이터 값 초기화 
+            document.getElementById("statistical_data").setAttribute("data-nation_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-seoul_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-busan_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-daegu_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-incheon_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-gwangju_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-daejeon_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-ulsan_data", 0);
+            document.getElementById("statistical_data").setAttribute("data-sejong_data", 0);
+
+            for(var i=0;i<structure_specific_series_data.length;i++)
+            {
+                /*
+                    structure_specific에서 전국 데이터 가져오기
+
+                    지역(ITEM) id
+                    전국(평균): 00
+                    서울특별시: 11
+                    부산광역시: 21
+                    대구광역시: 22
+                    인천광역시: 23
+                    광주광역시: 24
+                    대전광역시: 25
+                    울산광역시: 26
+                    세종특별자치시: 29
+                */
+                //주기 번호 
+                structure_specific_FREQ = structure_specific_series_data[i].getAttribute("FREQ");
+                //항목 번호 
+                structure_specific_ITEM = structure_specific_series_data[i].getAttribute("ITEM");
+                //지역 번호 
+                //console.log("local: " + document.getElementById("statistical_data").dataset.local_id_name);
+                structure_specific_LOCAL = structure_specific_series_data[i].getAttribute(document.getElementById("statistical_data").dataset.local_id_name);
+
+                //데이터
+                structure_specific_OBS_VALUE = structure_specific_series_data[i].childNodes[0].getAttribute("OBS_VALUE");
+        
+                //console.log("ITEM: " + structure_specific_ITEM + " / OBS_VALUE: " + structure_specific_OBS_VALUE);
+                //console.log("ITEM: " + structure_specific_ITEM + " / " + document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num);
+                //console.log("ITEM: " + structure_specific_ITEM + " / LOCAL: " + structure_specific_LOCAL);
+
+                if(structure_specific_ITEM == document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num)
+                {
+                    //if(structure_specific_LOCAL == "00")
+                    if(structure_specific_LOCAL == document.getElementById("statistical_data").dataset.nation_name_id)
+                    {
+                        //전국(평균): 00
+                        document.getElementById("statistical_data").setAttribute("data-nation_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.nation_data);
+                    }
+                    else if(structure_specific_LOCAL == "11")
+                    {
+                        //서울특별시: 11
+                        document.getElementById("statistical_data").setAttribute("data-seoul_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.seoul_data);
+                    }
+                    else if(structure_specific_LOCAL == "21")
+                    {
+                        //부산광역시: 21
+                        document.getElementById("statistical_data").setAttribute("data-busan_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.busan_data);
+                    }
+                    else if(structure_specific_LOCAL == "22")
+                    {
+                        //대구광역시: 22
+                        document.getElementById("statistical_data").setAttribute("data-daegu_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.daegu_data);
+                    }
+                    else if(structure_specific_LOCAL == "23")
+                    {
+                        //인천광역시: 23
+                        document.getElementById("statistical_data").setAttribute("data-incheon_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.incheon_data);
+                    }
+                    else if(structure_specific_LOCAL == "24")
+                    {
+                        //광주광역시: 24
+                        document.getElementById("statistical_data").setAttribute("data-gwangju_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.gwangju_data);
+                    }
+                    else if(structure_specific_LOCAL == "25")
+                    {
+                        //대전광역시: 25
+                        document.getElementById("statistical_data").setAttribute("data-daejeon_data", structure_specific_OBS_VALUE);
+                        console.log(document.getElementById("statistical_data").dataset.daejeon_data);
+                    }
+                    else if(structure_specific_LOCAL == "26")
+                    {
+                        //울산광역시: 26
+                        document.getElementById("statistical_data").setAttribute("data-ulsan_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.ulsan_data);
+                    }
+                    else if(structure_specific_LOCAL == "29")
+                    {
+                        //세종특별자치시: 29
+                        document.getElementById("statistical_data").setAttribute("data-sejong_data", structure_specific_OBS_VALUE);
+                        //console.log(document.getElementById("statistical_data").dataset.sejong_data);
                     }
                 }
             }
