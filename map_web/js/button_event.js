@@ -342,55 +342,55 @@ function get_statistical_data(button_num)
                 if(structure_specific_ITEM == document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num)
                 {
                     //if(structure_specific_LOCAL == "00")
-                    if(structure_specific_LOCAL == document.getElementById("statistical_data").dataset.nation_name_id)
+                    if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.nation_name_id)
                     {
                         //전국(평균): 00
                         document.getElementById("statistical_data").setAttribute("data-nation_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.nation_data);
                     }
-                    else if(structure_specific_LOCAL == "11")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.seoul_name_id)
                     {
                         //서울특별시: 11
                         document.getElementById("statistical_data").setAttribute("data-seoul_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.seoul_data);
                     }
-                    else if(structure_specific_LOCAL == "21")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.busan_name_id)
                     {
                         //부산광역시: 21
                         document.getElementById("statistical_data").setAttribute("data-busan_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.busan_data);
                     }
-                    else if(structure_specific_LOCAL == "22")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.daegu_name_id)
                     {
                         //대구광역시: 22
                         document.getElementById("statistical_data").setAttribute("data-daegu_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.daegu_data);
                     }
-                    else if(structure_specific_LOCAL == "23")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.incheon_name_id)
                     {
                         //인천광역시: 23
                         document.getElementById("statistical_data").setAttribute("data-incheon_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.incheon_data);
                     }
-                    else if(structure_specific_LOCAL == "24")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.gwangju_name_id)
                     {
                         //광주광역시: 24
                         document.getElementById("statistical_data").setAttribute("data-gwangju_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.gwangju_data);
                     }
-                    else if(structure_specific_LOCAL == "25")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.daejeon_name_id)
                     {
                         //대전광역시: 25
                         document.getElementById("statistical_data").setAttribute("data-daejeon_data", structure_specific_OBS_VALUE);
                         console.log(document.getElementById("statistical_data").dataset.daejeon_data);
                     }
-                    else if(structure_specific_LOCAL == "26")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.ulsan_name_id)
                     {
                         //울산광역시: 26
                         document.getElementById("statistical_data").setAttribute("data-ulsan_data", structure_specific_OBS_VALUE);
                         //console.log(document.getElementById("statistical_data").dataset.ulsan_data);
                     }
-                    else if(structure_specific_LOCAL == "29")
+                    else if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.sejong_name_id)
                     {
                         //세종특별자치시: 29
                         document.getElementById("statistical_data").setAttribute("data-sejong_data", structure_specific_OBS_VALUE);
