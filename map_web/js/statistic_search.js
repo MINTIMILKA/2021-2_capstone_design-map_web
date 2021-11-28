@@ -1,65 +1,22 @@
-function list_back(button_count)
+//제목 검색결과 구하기 
+function statistic_search()
 {
-    var list_order_num = document.getElementById("list_order").dataset.list_num;
-    if(list_order_num > 0)
-    {
-        document.getElementById("list_order").dataset.list_num = (parseInt(list_order_num) - 1) + "";
-        var list_order_num = document.getElementById("list_order").dataset.list_num;
-
-        for(var i=1;i<=button_count;i++)
-        {
-            document.getElementById("statistical_button_" + i).dataset.statistical_button_num = (parseInt(document.getElementById("statistical_button_" + i).dataset.statistical_button_num) - button_count) + "";
-        }
-        //console.log(document.getElementById("list_order").dataset.list_num);
-
-        var statistical_button_num = parseInt(document.getElementById("list_order").dataset.list_num)*5;
-        
-        address_parse_button_init(button_count, statistical_button_num);
-    }
-}
-
-function list_next(button_count)
-{
-    var list_order_num = document.getElementById("list_order").dataset.list_num;
+    var search_text = document.getElementById("statistic_search").value;
     
-    //리스트의 전체 크기를 지정해야 함 
-    if(list_order_num < 28)
-    {
-        document.getElementById("list_order").dataset.list_num = (parseInt(list_order_num) + 1) + "";
-    
-        var list_order_num = document.getElementById("list_order").dataset.list_num;
+    var search_keyword = search_text.split(" ");
 
-        for(var i=1;i<=button_count;i++)
-        {
-            document.getElementById("statistical_button_" + i).dataset.statistical_button_num = (parseInt(document.getElementById("statistical_button_" + i).dataset.statistical_button_num) + button_count) + "";
-        }
-        //console.log(document.getElementById("list_order").dataset.list_num);
-
-        var statistical_button_num = parseInt(document.getElementById("list_order").dataset.list_num)*5;
-        
-        address_parse_button_init(button_count, statistical_button_num);
-    }
-}
-
-//버튼 초기화 
-function address_parse_button_init(button_count, statistical_button_num)
-{
     var xml_address_parser = new XMLHttpRequest();
 
     var xml_address_url = "http://34.64.176.60/test_html_1/statistical_data_api.xml";
 
     xml_address_parser.open('GET',xml_address_url, true);
     xml_address_parser.send();
+    
+    var title_search_list = document.getElementById("title_search_list");
 
     //통계 이름, dsd 주소, structure_specific 주소 
     var xml_name, xml_dsd_url, xml_structure_specific_url;
-
-    /*
-        [CORS 에러]
-        Access to XMLHttpRequest at 에러 해결 방법 출처
-        (서버에서 해결함)
-        https://www.hooni.net/xe/study/102430
-    */
+    
     xml_address_parser.onreadystatechange = function()
     {
         //서버가 성공적으로 연결될 때
@@ -71,51 +28,118 @@ function address_parse_button_init(button_count, statistical_button_num)
             var dsd = xml.getElementsByTagName("data:dsd");
             var structure_specific = xml.getElementsByTagName("data:structure_specific");
 
-            for(var i=1;i<=button_count;i++)
+            //이전 제목 버튼 제거
+            if(title_search_list.childNodes.length > 0)
             {
-                if(statistical_button_num+i < name.length)
+                var title_search_num = title_search_list.childNodes.length;
+
+                for(var i=0;i<title_search_num;i++)
                 {
-                    //구글 클라우드 서버에서 주소 가져오기 
-                    xml_name = name[statistical_button_num+i-1].getAttribute("name");
-                    xml_dsd_url = dsd[statistical_button_num+i-1].childNodes[0].nodeValue;
-                    xml_structure_specific_url = structure_specific[statistical_button_num+i-1].childNodes[0].nodeValue;
-
-                    //버튼 텍스트 지정 
-                    document.getElementById("statistical_button_" + i).innerText = xml_name;
-
-                    document.getElementById("statistical_button_data_" + i).setAttribute("data-statistical_button_name", xml_name);
-                    document.getElementById("statistical_button_data_" + i).setAttribute("data-statistical_button_dsd_url", xml_dsd_url);
-                    document.getElementById("statistical_button_data_" + i).setAttribute("data-statistical_button_structure_specific_url", xml_structure_specific_url);
-
-                    //console.log(document.getElementById("statistical_button_data_" + i).dataset.statistical_button_name);
-                    //console.log(document.getElementById("statistical_button_data_" + i).dataset.statistical_button_dsd_url);
-                    //console.log(document.getElementById("statistical_button_data_" + i).dataset.statistical_button_structure_specific_url);
+                    for(var j=0;j<title_search_list.childNodes[i].childNodes.length;j++)
+                    {
+                        var title_search_button = title_search_list.childNodes[i].childNodes[j];
+                        var title_search_button_div = title_search_list.childNodes[i];
+                        title_search_button_div.removeChild(title_search_button);
+                    }
                 }
-                else
+
+                for(var i=0;i<title_search_num;i++)
                 {
-                    //버튼 텍스트 지정 
-                    document.getElementById("statistical_button_" + i).innerText = " * ";
-
-                    document.getElementById("statistical_button_data_" + i).dataset.statistical_button_name = "";
-                    document.getElementById("statistical_button_data_" + i).dataset.statistical_button_dsd_url = "";
-                    document.getElementById("statistical_button_data_" + i).dataset.statistical_button_structure_specific_url = "";
+                    //div가 줄어들면 div의 번호도 실시간으로 줄어듬 
+                    title_search_list.removeChild(title_search_list.querySelectorAll("div")[0]);
                 }
+            }
+            
+            //출력할 제목의 번호가 저장된 배열
+            var title_num = [];
+            //제목 포인트가 저장된 배열 
+            var title_num_point = [];
+
+            for(var i=0;i<name.length;i++)
+            {
+                //구글 클라우드 서버에서 주소 가져오기 
+                xml_name = name[i].getAttribute("name");
+
+                //연관성이 깊은 제목 포인트 (키워드가 많이 겹치면 +1)
+                var search_point = 0;
+
+                for(var j=0;j<search_keyword.length;j++)
+                {
+                    var temp_search_pos = 0;
+                    while(temp_search_pos > -1)
+                    {
+                        temp_search_pos = xml_name.indexOf(search_keyword[j]);
+
+                        if(temp_search_pos > -1)
+                        {
+                            search_point++;
+                            xml_name = xml_name.substring(temp_search_pos + 1, xml_name.length);
+                        }
+                    }
+                }
+
+                if(search_point > 0)
+                {
+                    title_num.push(i);
+                    title_num_point.push(search_point);
+                }
+            }
+
+            for(var i=0; i<title_num_point.length;i++)
+            {
+                for(var j=0;j<title_num_point.length-i-1;j++)
+                {
+                    if(title_num_point[j] < title_num_point[j+1])
+                    {
+                        var temp_1 = title_num_point[j];
+                        var temp_2 = title_num[j];
+
+                        title_num_point[j] = title_num_point[j+1];
+                        title_num[j] = title_num[j+1];
+
+                        title_num_point[j+1] = temp_1;
+                        title_num[j+1] = temp_2;
+                    }
+                }
+            }
+
+            for(var i=0; i<title_num.length;i++)
+            {
+                
+                xml_dsd_url = dsd[title_num[i]].childNodes[0].nodeValue;
+                xml_structure_specific_url = structure_specific[title_num[i]].childNodes[0].nodeValue;
+
+                //console.log(i + ": " + title_num_point[i] + " / " + name[title_num[i]].getAttribute("name"));
+                //제목 버튼 생성 
+                var title_search_button_div = document.createElement("div");
+                var title_search_button = document.createElement("button");
+                var title_search_name = document.createTextNode(name[title_num[i]].getAttribute("name"));
+                
+                title_search_button.appendChild(title_search_name);
+                title_search_button_div.appendChild(title_search_button);
+                title_search_list.appendChild(title_search_button_div);
+
+                //제목 버튼 속성 변경 
+                title_search_button.setAttribute("id", "title_search_button_" + (i+1));
+                title_search_button.setAttribute("onclick", "get_subtitle_search(" + (i+1) + ")");
+                title_search_button.setAttribute("data-title_search_button_dsd_url", xml_dsd_url);
+                title_search_button.setAttribute("data-title_search_button_structure_specific_url", xml_structure_specific_url);
             }
         }
     }
 }
 
-//부제목 구하기 
-function get_subtitle(button_num)
+//검색결과에서 부제목 구하기 
+function get_subtitle_search(button_num)
 {
     var xml_dsd_parser = new XMLHttpRequest();
 
-    var xml_dsd_url = document.getElementById("statistical_button_data_" + button_num).dataset.statistical_button_dsd_url;
+    var xml_dsd_url = document.getElementById("title_search_button_" + button_num).dataset.title_search_button_dsd_url;
 
     xml_dsd_parser.open('GET',xml_dsd_url, true);
     xml_dsd_parser.send();
 
-    var subtitle_list = document.getElementById("subtitle_list");
+    var subtitle_search_list = document.getElementById("subtitle_search_list");
     
     var code_list_id, code_id;
 
@@ -136,29 +160,29 @@ function get_subtitle(button_num)
             var concept_list = xml.getElementsByTagName("structure:Concept");
 
             //이전 부제목 버튼 제거
-            if(subtitle_list.childNodes.length > 0)
+            if(subtitle_search_list.childNodes.length > 0)
             {
-                var subtitle_num = subtitle_list.childNodes.length;
+                var subtitle_search_num = subtitle_search_list.childNodes.length;
 
-                for(var i=0;i<subtitle_num;i++)
+                for(var i=0;i<subtitle_search_num;i++)
                 {
-                    for(var j=0;j<subtitle_list.childNodes[i].childNodes.length;j++)
+                    for(var j=0;j<subtitle_search_list.childNodes[i].childNodes.length;j++)
                     {
-                        var subtitle_button = subtitle_list.childNodes[i].childNodes[j];
-                        var subtitle_button_div = subtitle_list.childNodes[i];
-                        subtitle_button_div.removeChild(subtitle_button);
+                        var subtitle_search_button = subtitle_search_list.childNodes[i].childNodes[j];
+                        var subtitle_search_button_div = subtitle_search_list.childNodes[i];
+                        subtitle_search_button_div.removeChild(subtitle_search_button);
                     }
                 }
 
-                for(var i=0;i<subtitle_num;i++)
+                for(var i=0;i<subtitle_search_num;i++)
                 {
                     //div가 줄어들면 div의 번호도 실시간으로 줄어듬 
-                    subtitle_list.removeChild(subtitle_list.querySelectorAll("div")[0]);
+                    subtitle_search_list.removeChild(subtitle_search_list.querySelectorAll("div")[0]);
                 }
             }
             
             //부제목 버튼 번호 
-            var subtitle_button_num = 0;
+            var subtitle_search_button_num = 0;
 
             //부제목 리스트 구하기 
             for(var i=0;i<code_list.length;i++)
@@ -175,21 +199,21 @@ function get_subtitle(button_num)
                             //console.log(code_list[i].childNodes[j].childNodes[0].textContent);
 
                             //부제목 버튼 생성 
-                            var subtitle_button_div = document.createElement("div");
-                            var subtitle_button = document.createElement("button");
-                            var subtitle_name = document.createTextNode(code_list[i].childNodes[j].childNodes[0].textContent);
+                            var subtitle_search_button_div = document.createElement("div");
+                            var subtitle_search_button = document.createElement("button");
+                            var subtitle_search_name = document.createTextNode(code_list[i].childNodes[j].childNodes[0].textContent);
                             
-                            subtitle_button.appendChild(subtitle_name);
-                            subtitle_button_div.appendChild(subtitle_button);
-                            subtitle_list.appendChild(subtitle_button_div);
+                            subtitle_search_button.appendChild(subtitle_search_name);
+                            subtitle_search_button_div.appendChild(subtitle_search_button);
+                            subtitle_search_list.appendChild(subtitle_search_button_div);
 
                             //부제목 버튼 속성 변경 
-                            subtitle_button_num++;
-                            subtitle_button.setAttribute("id", "subtitle_button_" + subtitle_button_num);
-                            subtitle_button.setAttribute("data-subtitle_item_id_num", code_id);
-                            subtitle_button.setAttribute("data-title_button_num", button_num);
-                            subtitle_button.setAttribute("data-subtitle_button_num", subtitle_button_num);
-                            subtitle_button.setAttribute("onClick", "get_statistical_data(" + subtitle_button_num + ")");
+                            subtitle_search_button_num++;
+                            subtitle_search_button.setAttribute("id", "subtitle_search_button_" + subtitle_search_button_num);
+                            subtitle_search_button.setAttribute("data-subtitle_item_id_num", code_id);
+                            subtitle_search_button.setAttribute("data-title_button_num", button_num);
+                            subtitle_search_button.setAttribute("data-subtitle_button_num", subtitle_search_button_num);
+                            subtitle_search_button.setAttribute("onClick", "get_statistical_search_data(" + subtitle_search_button_num + ")");
                         }
                     }
                 }
@@ -265,13 +289,13 @@ function get_subtitle(button_num)
 }
 
 //xml structure_specific 데이터 
-function get_statistical_data(button_num)
+function get_statistical_search_data(button_num)
 {
     var xml_structure_specific_parser = new XMLHttpRequest();
 
-    var title_button_num = document.getElementById("subtitle_button_" + button_num).dataset.title_button_num;
+    var title_button_num = document.getElementById("subtitle_search_button_" + button_num).dataset.title_button_num;
     //console.log("title_button_num: " + title_button_num);
-    var xml_structure_specific_url_text = document.getElementById("statistical_button_data_" + title_button_num).dataset.statistical_button_structure_specific_url;
+    var xml_structure_specific_url_text = document.getElementById("title_search_button_" + button_num).dataset.title_search_button_structure_specific_url;
 
     //var dsd_url_text = "https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL9801/2/1/20211117214224&type=DSD&prdSe=Y&version=v2_1";
 
@@ -339,7 +363,7 @@ function get_statistical_data(button_num)
                 //console.log("ITEM: " + structure_specific_ITEM + " / " + document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num);
                 //console.log("ITEM: " + structure_specific_ITEM + " / LOCAL: " + structure_specific_LOCAL);
 
-                if(structure_specific_ITEM == document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num)
+                if(structure_specific_ITEM == document.getElementById("subtitle_search_button_" + button_num).dataset.subtitle_item_id_num)
                 {
                     //if(structure_specific_LOCAL == "00")
                     if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.nation_name_id)
