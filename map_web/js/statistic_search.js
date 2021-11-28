@@ -295,7 +295,7 @@ function get_statistical_search_data(button_num)
 
     var title_button_num = document.getElementById("subtitle_search_button_" + button_num).dataset.title_button_num;
     //console.log("title_button_num: " + title_button_num);
-    var xml_structure_specific_url_text = document.getElementById("title_search_button_" + button_num).dataset.title_search_button_structure_specific_url;
+    var xml_structure_specific_url_text = document.getElementById("title_search_button_" + title_button_num).dataset.title_search_button_structure_specific_url;
 
     //var dsd_url_text = "https://kosis.kr/openapi/statisticsData.do?method=getList&apiKey=NWMyYjM4YTFiNjc1Mjk4ZWRiMjQ0NTBmNDg3NTAzOTE=&format=sdmx&jsonVD=Y&userStatsId=kjkj0581/101/DT_1YL9801/2/1/20211117214224&type=DSD&prdSe=Y&version=v2_1";
 
