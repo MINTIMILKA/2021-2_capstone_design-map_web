@@ -78,8 +78,8 @@
 							list_back, list_next의 변수(5): 버튼의 수
 						-->
 						<p></p>
-						<button type="submit" class="btn btn-outline-dark" id="list_back" onclick="list_back(5)">&lt;&lt;</button>
-						<button type="submit" class="btn btn-outline-dark" id="list_next" onclick="list_next(5)">&gt;&gt;</button>
+						<button type="submit" class="btn btn-outline-primary" id="list_back" onclick="list_back(5)">&lt;&lt;</button>
+						<button type="submit" class="btn btn-outline-primary" id="list_next" onclick="list_next(5)">&gt;&gt;</button>
 						</div>
 					</div>
 				</div>
@@ -112,19 +112,31 @@
 				<data id="local_name_id" data-nation_name_id="" data-seoul_name_id="", data-busan_name_id="" data-daegu_name_id="" data-incheon_name_id="" data-gwangju_name_id="" data-daejeon_name_id="" data-ulsan_name_id="" data-sejong_name_id=""></data>
 				<data id="statistical_data" data-local_id_name="" data-nation_data="0" data-seoul_data="0" data-busan_data="0" data-daegu_data="0" data-incheon_data="0" data-gwangju_data="0" data-daejeon_data="0" data-ulsan_data="0" data-sejong_data="0"></data>
 				
+				<!-- 
+					통계의 부가 데이터  
+					title_name: 선택한 제목 이름
+					subtitle_name: 선택한 부제목 이름 
+					statistical_unit: 데이터의 단위 이름 
+				-->
+				<data id="peripheral_data" data-title_name="" data-subtitle_name="" data-statistical_unit=""></data>
+				
 				<!-- 테스트 출력 항목은 지워도 됨 -->
 				<p></p>
-				<button onclick="test_function()" class="btn btn-outline-success">데이터 확인</button>
+				<button onclick="test_function()" class="btn btn-outline-primary">데이터 확인</button>
 				<!-- 
+				<p id="test0">선택한 자료 이름</p>
 				<p id="test1">서울</p>
-				<p id="test2">대전</p> -->
+				<p id="test2">대전</p>
+				<p id="test10">단위</p> -->
 
 				<!-- 데이터 출력 테스트 
 				<script>
 					function test_function()
 					{
+						document.getElementById("test0").innerText = "제목: " + document.getElementById("peripheral_data").dataset.title_name + " / 부제목: " + document.getElementById("peripheral_data").dataset.subtitle_name;
 						document.getElementById("test1").innerText = "서울 id: " + document.getElementById("local_name_id").dataset.seoul_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.seoul_data;
 						document.getElementById("test2").innerText = "대전 id: " + document.getElementById("local_name_id").dataset.daejeon_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.daejeon_data;
+						document.getElementById("test10").innerText = "단위: " + document.getElementById("peripheral_data").dataset.statistical_unit;
 					}
 				</script>
 			-->
