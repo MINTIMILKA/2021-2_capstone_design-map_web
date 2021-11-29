@@ -1,28 +1,27 @@
 <!doctype html>
-<html lang="ko">
-	<head>
+<html lang="ko">	
+<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 		<title>한눈에 보는 지역정보</title>
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/buttonstyle.css">
-		<script src="https://code.jquery.com/jquery-3.6.0.js"
-  		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> <!--AJAX를 사용하기 위한 jQUERY 호출-->
 		<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dx0rd7v5mk"></script> <!--지도 API 가져옴-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>  <!--표를 나타내기 위한 chart.js 가져옴-->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!--여러 표를 나타내기 위한 부트스트랩-->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 	</head>
 	<body>
 	
 		<div id="container">
 			
-			<!--헤더 출력-->
+			<!--헤더 출력 11.29-->
 			<header>
 				<div id="logo">
-					<a href="map.html">
+					<p></p>
 						<h1>Statistics Search</h1>
-					</a>
 				</div>
 			</header>
 			
@@ -40,26 +39,28 @@
 					<script src="js/button_event.js"></script>
 					
 					<br>
-					<p>통계 제목 리스트</p>
-					
+					<h2>통계 제목 리스트</h2>
+					<p></p>
+
+					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
 					<div id="button_1">
-						<button type="submit" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
+						<button type="submit" class="btn btn-outline-primary" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
 						<data id="statistical_button_data_1" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
 					<div id="button_2">
-						<button type="submit" id="statistical_button_2" onclick="get_subtitle(2)" data-statistical_button_num="2"> </button>
+						<button type="submit" class="btn btn-outline-primary" id="statistical_button_2" onclick="get_subtitle(2)" data-statistical_button_num="2"> </button>
 						<data id="statistical_button_data_2" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
 					<div id="button_3">
-						<button type="submit" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
+						<button type="submit" class="btn btn-outline-primary" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
 						<data id="statistical_button_data_3" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
 					<div id="button_4">
-						<button type="submit" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
+						<button type="submit" class="btn btn-outline-primary" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
 						<data id="statistical_button_data_4" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
 					<div id="button_5">
-						<button type="submit" id="statistical_button_5" onclick="get_subtitle(5)" data-statistical_button_num="5"> </button>
+						<button type="submit" class="btn btn-outline-primary" id="statistical_button_5" onclick="get_subtitle(5)" data-statistical_button_num="5"> </button>
 						<data id="statistical_button_data_5" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
 					</div>
 
@@ -76,8 +77,10 @@
 							문자열 '<<'는 &lt;, '>>'는 &gt;으로 표현됨
 							list_back, list_next의 변수(5): 버튼의 수
 						-->
-						<button type="submit" id="list_back" onclick="list_back(5)">&lt;&lt;</button>
-						<button type="submit" id="list_next" onclick="list_next(5)">&gt;&gt;</button>
+						<p></p>
+						<button type="submit" class="btn btn-outline-primary" id="list_back" onclick="list_back(5)">&lt;&lt;</button>
+						<button type="submit" class="btn btn-outline-primary" id="list_next" onclick="list_next(5)">&gt;&gt;</button>
+						</div>
 					</div>
 				</div>
 
@@ -88,7 +91,7 @@
 					부제목 버튼 번호: data-subtitle_button_num
 				-->
 				<br>
-				<p>통계 부제목 리스트</p>
+				<h3>통계 부제목 리스트</h3>
 
 				<div id="subtitle_list"></div>
 
@@ -110,12 +113,13 @@
 				<data id="statistical_data" data-local_id_name="" data-nation_data="0" data-seoul_data="0" data-busan_data="0" data-daegu_data="0" data-incheon_data="0" data-gwangju_data="0" data-daejeon_data="0" data-ulsan_data="0" data-sejong_data="0"></data>
 				
 				<!-- 테스트 출력 항목은 지워도 됨 -->
-				<br>
-				<button onclick="test_function()">데이터 확인</button>
+				<p></p>
+				<button onclick="test_function()" class="btn btn-outline-primary">데이터 확인</button>
+				<!-- 
 				<p id="test1">서울</p>
-				<p id="test2">대전</p>
+				<p id="test2">대전</p> -->
 
-				<!-- 데이터 출력 테스트 -->
+				<!-- 데이터 출력 테스트 
 				<script>
 					function test_function()
 					{
@@ -123,12 +127,86 @@
 						document.getElementById("test2").innerText = "대전 id: " + document.getElementById("local_name_id").dataset.daejeon_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.daejeon_data;
 					}
 				</script>
+			-->
 			</div>
 			
 			<!--차트 출력-->
 			<div id="chart">
-				<canvas id="myChart"></canvas>
-				<script src="js/list.js"></script>
+			<canvas id="myChart"></canvas>
+			<script>
+			function test_function() {
+			var nation =  document.getElementById("statistical_data").dataset.nation_data
+			var seoul =  document.getElementById("statistical_data").dataset.seoul_data
+			var busan =  document.getElementById("statistical_data").dataset.busan_data
+			var daegu =  document.getElementById("statistical_data").dataset.daegu_data
+			var incheon =  document.getElementById("statistical_data").dataset.incheon_data
+			var gwangju =  document.getElementById("statistical_data").dataset.gwangju_data
+			var daejeon =  document.getElementById("statistical_data").dataset.daejeon_data
+			var ulsan =  document.getElementById("statistical_data").dataset.ulsan_data
+			var sejong =  document.getElementById("statistical_data").dataset.sejong_data	
+			const context = document
+			.getElementById('myChart') //mychart라는 id를 가진 요소를 가져와서 context라는 객체에 저장한다라는 뜻. (getElementById는 특정 아이디의 요소 노드에 직접 접근이 가능한 메소드다, 보통 먼저 getEle.. 메서드로 캔버스 객체를 먼저 찾는다.)
+			.getContext('2d'); // 캔버스 그리기 영역이며 그리기 메서드를 가지는 객체이다.
+			const myChart = new Chart(context, {
+			type: 'bar', // 차트의 형태
+			data: { // 차트에 들어갈 데이터
+    		labels: [ 
+        	//x 축 -->
+       		"전국","서울","부산","대구","인천","광주","대전","울산","세종"
+    		],
+			
+    		datasets: [
+        	{ //데이터
+            label: '통계비교', //차트 제목	
+            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+            data: [nation,seoul,busan,daegu,incheon,gwangju,daejeon,ulsan,sejong
+			
+            ],
+            backgroundColor: [
+                //색상
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)', 
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+				'rgba(246, 135, 135, 0.2)', 
+				'rgba(193, 196, 228, 0.2)',
+				'rgba(193, 228, 89, 0.2)',
+            ],
+            borderColor: [
+                //경계선 색상
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+				'rgba(246, 135, 135, 1)', 
+				'rgba(193, 196, 228, 1)',
+				'rgba(193, 228, 89, 1)',
+            ],
+            borderWidth: 1 //경계선 굵기
+        }
+    ]
+},
+
+options: {
+    scales: {
+        yAxes: [
+            {
+                ticks: {
+                    beginAtZero: true
+                }
+            }
+        ]
+    }
+}
+
+});
+			}	
+
+				</script>
 
 				<!-- 검색창 -->
 				<p>통계 제목 검색</p>
