@@ -291,6 +291,11 @@ function get_subtitle_search(button_num)
 //xml structure_specific 데이터 
 function get_statistical_search_data(button_num)
 {
+    //제목 데이터 추가 
+    document.getElementById("peripheral_data").setAttribute("data-title_name", document.getElementById("title_search_button_" + document.getElementById("subtitle_search_button_" + button_num).dataset.title_button_num).textContent);
+    //부제목 데이터 추가 
+    document.getElementById("peripheral_data").setAttribute("data-subtitle_name", document.getElementById("subtitle_search_button_" + button_num).textContent);
+
     var xml_structure_specific_parser = new XMLHttpRequest();
 
     var title_button_num = document.getElementById("subtitle_search_button_" + button_num).dataset.title_button_num;
