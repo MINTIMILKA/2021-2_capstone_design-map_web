@@ -12,6 +12,14 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+		<!-- 
+			SheetJS 사용 
+			출처: https://eblo.tistory.com/84
+		-->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
 	</head>
 	<body>
 	
@@ -43,43 +51,56 @@
 					<p></p>
 
 					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
-					<div id="button_1">
-						<button type="submit" class="btn btn-outline-primary" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
-						<data id="statistical_button_data_1" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-					</div>
-					<div id="button_2">
-						<button type="submit" class="btn btn-outline-primary" id="statistical_button_2" onclick="get_subtitle(2)" data-statistical_button_num="2"> </button>
-						<data id="statistical_button_data_2" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-					</div>
-					<div id="button_3">
-						<button type="submit" class="btn btn-outline-primary" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
-						<data id="statistical_button_data_3" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-					</div>
-					<div id="button_4">
-						<button type="submit" class="btn btn-outline-primary" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
-						<data id="statistical_button_data_4" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-					</div>
-					<div id="button_5">
-						<button type="submit" class="btn btn-outline-primary" id="statistical_button_5" onclick="get_subtitle(5)" data-statistical_button_num="5"> </button>
-						<data id="statistical_button_data_5" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-					</div>
+						<div id="button_1">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
+							<data id="statistical_button_data_1" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_2">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_2" onclick="get_subtitle(2)" data-statistical_button_num="2"> </button>
+							<data id="statistical_button_data_2" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_3">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
+							<data id="statistical_button_data_3" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_4">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
+							<data id="statistical_button_data_4" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_5">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_5" onclick="get_subtitle(5)" data-statistical_button_num="5"> </button>
+							<data id="statistical_button_data_5" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_6">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_6" onclick="get_subtitle(6)" data-statistical_button_num="6"> </button>
+							<data id="statistical_button_data_6" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_7">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_7" onclick="get_subtitle(7)" data-statistical_button_num="7"> </button>
+							<data id="statistical_button_data_7" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
+						<div id="button_8">
+							<button type="submit" class="btn btn-outline-primary" id="statistical_button_8" onclick="get_subtitle(8)" data-statistical_button_num="8"> </button>
+							<data id="statistical_button_data_8" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
+						</div>
 
-					<!-- 버튼 초기화 -->
-					<script>address_parse_button_init(5, 0);</script>
+						<!-- 버튼 초기화 -->
+						<script>address_parse_button_init(8, 0);</script>
 
-					<div id="list_order" data-list_num="0">
-						<!-- 
-							통계 리스트의 순서 번호는 list_num에 저장됨 
-							(list_back: list_num=-1, list_next: list_num=+1)
-						 -->
+						<div id="list_order" data-list_num="0">
+							<!-- 
+								통계 리스트의 순서 번호는 list_num에 저장됨 
+								(list_back: list_num=-1, list_next: list_num=+1)
+							-->
 
-						<!-- 
-							문자열 '<<'는 &lt;, '>>'는 &gt;으로 표현됨
-							list_back, list_next의 변수(5): 버튼의 수
-						-->
-						<p></p>
-						<button type="submit" class="btn btn-outline-primary" id="list_back" onclick="list_back(5)">&lt;&lt;</button>
-						<button type="submit" class="btn btn-outline-primary" id="list_next" onclick="list_next(5)">&gt;&gt;</button>
+							<!-- 
+								문자열 '<<'는 &lt;, '>>'는 &gt;으로 표현됨
+								list_back, list_next의 변수(5): 버튼의 수
+							-->
+							<p></p>
+							<button type="submit" class="btn btn-outline-primary" id="list_back" onclick="list_back(8)">&lt;&lt;</button>
+							<button type="submit" class="btn btn-outline-primary" id="list_next" onclick="list_next(8)">&gt;&gt;</button>
+							<p id="list_page_text" data-list_page_max data-current_list_page=0></p>
 						</div>
 					</div>
 				</div>
@@ -116,35 +137,42 @@
 					통계의 부가 데이터  
 					title_name: 선택한 제목 이름
 					subtitle_name: 선택한 부제목 이름 
-					statistical_unit: 데이터의 단위 이름 
+					statistical_unit: 데이터의 단위 id 이름 
+					current_statistical_unit: 현재 선택한 데이터의 단위 이름 
 				-->
-				<data id="peripheral_data" data-title_name="" data-subtitle_name="" data-statistical_unit=""></data>
+				<data id="peripheral_data" data-title_name="" data-subtitle_name="" data-statistical_unit="" data-current_statistical_unit=""></data>
 				
 				<!-- 테스트 출력 항목은 지워도 됨 -->
 				<p></p>
 				<button onclick="test_function()" class="btn btn-outline-primary">데이터 확인</button>
-				<!-- 
+				
 				<p id="test0">선택한 자료 이름</p>
 				<p id="test1">서울</p>
 				<p id="test2">대전</p>
-				<p id="test10">단위</p> -->
+				<p id="test10">단위</p>
 
-				<!-- 데이터 출력 테스트 
+				<!-- 데이터 출력 테스트 -->
 				<script>
-					function test_function()
+					function test_function_1()
 					{
 						document.getElementById("test0").innerText = "제목: " + document.getElementById("peripheral_data").dataset.title_name + " / 부제목: " + document.getElementById("peripheral_data").dataset.subtitle_name;
 						document.getElementById("test1").innerText = "서울 id: " + document.getElementById("local_name_id").dataset.seoul_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.seoul_data;
 						document.getElementById("test2").innerText = "대전 id: " + document.getElementById("local_name_id").dataset.daejeon_name_id + " / 데이터: " + document.getElementById("statistical_data").dataset.daejeon_data;
-						document.getElementById("test10").innerText = "단위: " + document.getElementById("peripheral_data").dataset.statistical_unit;
+						document.getElementById("test10").innerText = "단위: " + document.getElementById("peripheral_data").dataset.current_statistical_unit;
 					}
 				</script>
-			-->
+
+				<!-- 엑셀 기능 추가 -->
+				<script src="js/excel.js"></script>
+				<button onclick="excel_statistic_file()"> 엑셀로 저장하기 </button>
+
 			</div>
 			
 			<!--차트 출력-->
 			<div id="chart">
-			<canvas id="myChart"></canvas>
+			<div id="chart_div">
+				<canvas id="myChart"></canvas>
+			</div>
 			<script>
 			function test_function() {
 			var nation =  document.getElementById("statistical_data").dataset.nation_data
@@ -156,10 +184,22 @@
 			var daejeon =  document.getElementById("statistical_data").dataset.daejeon_data
 			var ulsan =  document.getElementById("statistical_data").dataset.ulsan_data
 			var sejong =  document.getElementById("statistical_data").dataset.sejong_data	
+			
+			//캔버스 지우기 
+			var chart_div = document.getElementById("chart_div");
+			old_chart_canvas = document.getElementById("myChart");
+			chart_div.removeChild(old_chart_canvas);
+
+			//캔버스 새로 생성 
+			var new_chart_canvas = document.createElement("canvas");
+			new_chart_canvas.setAttribute("id", "myChart");
+			chart_div.appendChild(new_chart_canvas);
+			
 			const context = document
 			.getElementById('myChart') //mychart라는 id를 가진 요소를 가져와서 context라는 객체에 저장한다라는 뜻. (getElementById는 특정 아이디의 요소 노드에 직접 접근이 가능한 메소드다, 보통 먼저 getEle.. 메서드로 캔버스 객체를 먼저 찾는다.)
 			.getContext('2d'); // 캔버스 그리기 영역이며 그리기 메서드를 가지는 객체이다.
-			const myChart = new Chart(context, {
+			
+			var myChart = new Chart(context, {
 			type: 'bar', // 차트의 형태
 			data: { // 차트에 들어갈 데이터
     		labels: [ 
