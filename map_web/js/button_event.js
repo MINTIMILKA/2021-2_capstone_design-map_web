@@ -225,7 +225,7 @@ function get_subtitle(button_num)
                             //console.log(code_list[i].childNodes[j].getAttribute("id"));
                             //console.log(code_list[i].childNodes[j].childNodes[k].textContent);
 
-                            if(code_list[i].childNodes[j].childNodes[k].textContent.indexOf("전국(평균)") > -1)
+                            if(code_list[i].childNodes[j].childNodes[k].textContent.indexOf("전국") > -1)
                             {
                                 document.getElementById("local_name_id").setAttribute("data-nation_name_id", code_list[i].childNodes[j].getAttribute("id"))
                             }
@@ -416,6 +416,7 @@ function get_statistical_data(button_num)
 
                 if(structure_specific_ITEM == document.getElementById("subtitle_button_" + button_num).dataset.subtitle_item_id_num)
                 {
+                    //console.log("전국: "+ structure_specific_LOCAL +" / "+document.getElementById("local_name_id").dataset.nation_name_id);
                     //if(structure_specific_LOCAL == "00")
                     if(structure_specific_LOCAL == document.getElementById("local_name_id").dataset.nation_name_id)
                     {
