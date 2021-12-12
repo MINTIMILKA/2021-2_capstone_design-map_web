@@ -70,6 +70,8 @@
 				margin-bottom: 20px; /*외곽선이 밑으로 부터 얼마나 떨어져 있는가?*/
 				border:1px solid #ccc;
 				background-color: white;
+				overflow-x: hidden;
+				overflow-y: auto;
 			}
 			
 
