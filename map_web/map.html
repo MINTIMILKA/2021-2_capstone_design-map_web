@@ -153,9 +153,9 @@
 			<!--차트 출력-->
 			
 			<div id="chart">
-			<div id="chart_div">
-				<canvas id="myChart"></canvas>
-			</div>
+				<div id="chart_div">
+					<canvas id="myChart"></canvas>
+				</div>
 			<script>
 			var a=50, b=50, c=50, d=50, e=50, f=50, g=50, h=50, i=50
 			function test_function() {
@@ -205,40 +205,40 @@
     		],
 			
     		datasets: [
-        	{ //데이터
-            label: '제목: '+ name + ', 부제목: '+ name2 + ', 단위: '+ unit,  //차트 제목	
-            fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
-            data: [nation,seoul,busan,daegu,incheon,gwangju,daejeon,ulsan,sejong
-			
-            ],
-            backgroundColor: [
-                //색상
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)', 
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-				'rgba(246, 135, 135, 0.2)', 
-				'rgba(193, 196, 228, 0.2)',
-				'rgba(193, 228, 89, 0.2)',
-            ],
-            borderColor: [
-                //경계선 색상
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-				'rgba(246, 135, 135, 1)', 
-				'rgba(193, 196, 228, 1)',
-				'rgba(193, 228, 89, 1)',
-            ],
-            borderWidth: 1 //경계선 굵기
-        }
-    ]
-},
+			{ //데이터
+				label: '제목: '+ name + ', 부제목: '+ name2 + ', 단위: '+ unit,  //차트 제목	
+				fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+				data: [nation,seoul,busan,daegu,incheon,gwangju,daejeon,ulsan,sejong
+				
+				],
+				backgroundColor: [
+					//색상
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)', 
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)',
+					'rgba(246, 135, 135, 0.2)', 
+					'rgba(193, 196, 228, 0.2)',
+					'rgba(193, 228, 89, 0.2)',
+				],
+				borderColor: [
+					//경계선 색상
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)',
+					'rgba(246, 135, 135, 1)', 
+					'rgba(193, 196, 228, 1)',
+					'rgba(193, 228, 89, 1)',
+				],
+				borderWidth: 1 //경계선 굵기
+        	}
+    	]
+	},
 
 options: {
     scales: { 
@@ -317,10 +317,12 @@ options: {
 }
 			
 });
-				</script>
+			</script>
 
 				<!-- 검색창 -->
-				<p><h3>통계 제목 검색</h3></p>
+				<p>
+					<h3>통계 제목 검색</h3>
+				</p>
 				
 				<script src="js/statistic_search.js"></script>
 				<input type="search" id="statistic_search">
@@ -329,17 +331,11 @@ options: {
 				<!-- 검색 결과 -->
 				
 				<p><h5>제목 검색 결과: </h5></p>
+				<div id="title_search_list"></div>
+
+				<p><h5>부제목 검색 결과: </h5></p>
+				<div id="subtitle_search_list"></div>
 				
-					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
-					<div id="title_search_list"></div>
-					</div>
-
-
-					<p><h5>부제목 검색 결과: </h5></p>
-					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
-					<div id="subtitle_search_list"></div>
-					</div>
-					</div>
 			</div>
 
 			<!--지도 출력-->
@@ -350,12 +346,12 @@ options: {
 			<!--푸터-->	
 			<div id="footer">
 				<p>
-				<ui>
-				<p>
-					한남대학교 캡스톤디자인 이만희 교수님 팀: 유태호, 김평석 제작
+					<ui>
+						<p>
+							한남대학교 캡스톤디자인 이만희 교수님 팀: 유태호, 김평석 제작
+						</p>
+					</ui>
 				</p>
-</ui>
-</p>
 			</div>
 		</div>
 	</body>
