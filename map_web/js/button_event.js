@@ -207,6 +207,7 @@ function get_subtitle(button_num)
 
                             //부제목 버튼 속성 변경 
                             subtitle_button_num++;
+                            subtitle_button.setAttribute("class", "btn btn-outline-primary");
                             subtitle_button.setAttribute("id", "subtitle_button_" + subtitle_button_num);
                             subtitle_button.setAttribute("data-subtitle_item_id_num", code_id);
                             subtitle_button.setAttribute("data-title_button_num", button_num);

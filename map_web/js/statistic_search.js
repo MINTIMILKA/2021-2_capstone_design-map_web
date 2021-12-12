@@ -212,6 +212,7 @@ function get_subtitle_search(button_num)
 
                             //부제목 버튼 속성 변경 
                             subtitle_search_button_num++;
+                            subtitle_button.setAttribute("class", "btn btn-outline-primary");
                             subtitle_search_button.setAttribute("id", "subtitle_search_button_" + subtitle_search_button_num);
                             subtitle_search_button.setAttribute("data-subtitle_item_id_num", code_id);
                             subtitle_search_button.setAttribute("data-title_button_num", button_num);
