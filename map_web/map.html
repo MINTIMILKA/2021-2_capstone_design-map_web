@@ -29,7 +29,7 @@
 			<header>
 				<div id="logo">
 					<p></p>
-						<h1>Statistics Search</h1>
+						<h1>한 눈에 보는 지역정보</h1>
 				</div>
 			</header>
 			
@@ -51,38 +51,24 @@
 					<p></p>
 
 					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
-						<div id="button_1">
+						
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_1" onclick="get_subtitle(1)" data-statistical_button_num="1"> </button>
 							<data id="statistical_button_data_1" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_2">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_2" onclick="get_subtitle(2)" data-statistical_button_num="2"> </button>
 							<data id="statistical_button_data_2" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_3">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_3" onclick="get_subtitle(3)" data-statistical_button_num="3"> </button>
 							<data id="statistical_button_data_3" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_4">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_4" onclick="get_subtitle(4)" data-statistical_button_num="4"> </button>
 							<data id="statistical_button_data_4" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_5">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_5" onclick="get_subtitle(5)" data-statistical_button_num="5"> </button>
 							<data id="statistical_button_data_5" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_6">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_6" onclick="get_subtitle(6)" data-statistical_button_num="6"> </button>
 							<data id="statistical_button_data_6" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_7">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_7" onclick="get_subtitle(7)" data-statistical_button_num="7"> </button>
 							<data id="statistical_button_data_7" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
-						<div id="button_8">
 							<button type="submit" class="btn btn-outline-primary" id="statistical_button_8" onclick="get_subtitle(8)" data-statistical_button_num="8"> </button>
 							<data id="statistical_button_data_8" data-statistical_button_name="" data-statistical_button_dsd_url="" data-statistical_button_structure_specific_url=""></data>
-						</div>
+						
 
 						<!-- 버튼 초기화 -->
 						<script>address_parse_button_init(8, 0);</script>
@@ -113,9 +99,9 @@
 				-->
 				<br>
 				<h3>통계 부제목 리스트</h3>
-
+				<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
 				<div id="subtitle_list"></div>
-
+				</div>
 				<!-- 
 					지역 선택 후 통계 데이터 불러오기 
 
@@ -160,11 +146,12 @@
 
 				<!-- 엑셀 기능 추가 -->
 				<script src="js/excel.js"></script>
-				<button onclick="excel_statistic_file()"> 엑셀로 저장하기 </button>
-
+				<button onclick="excel_statistic_file()" class="btn btn-outline-success"> 엑셀로 저장하기 </button>
+			
 			</div>
 			
 			<!--차트 출력-->
+			
 			<div id="chart">
 			<div id="chart_div">
 				<canvas id="myChart"></canvas>
@@ -333,19 +320,26 @@ options: {
 				</script>
 
 				<!-- 검색창 -->
-				<p>통계 제목 검색</p>
-
+				<p><h3>통계 제목 검색</h3></p>
+				
 				<script src="js/statistic_search.js"></script>
 				<input type="search" id="statistic_search">
 				<input type="submit" value="검색" onclick="statistic_search()">
 
 				<!-- 검색 결과 -->
-				<p>제목 검색 결과</p>
+				
+				<p><h5>제목 검색 결과: </h5></p>
+				
+					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
+					<div id="title_search_list"></div>
+					</div>
 
-				<div id="title_search_list"></div>
 
-				<p>부제목 검색 결과</p>
-				<div id="subtitle_search_list"></div>
+					<p><h5>부제목 검색 결과: </h5></p>
+					<div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
+					<div id="subtitle_search_list"></div>
+					</div>
+					</div>
 			</div>
 
 			<!--지도 출력-->
@@ -355,7 +349,13 @@ options: {
 
 			<!--푸터-->	
 			<div id="footer">
-				<h2>footer</h2>
+				<p>
+				<ui>
+				<p>
+					한남대학교 캡스톤디자인 이만희 교수님 팀: 유태호, 김평석 제작
+				</p>
+</ui>
+</p>
 			</div>
 		</div>
 	</body>
