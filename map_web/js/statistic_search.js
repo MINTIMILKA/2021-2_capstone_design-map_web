@@ -120,6 +120,7 @@ function statistic_search()
                 title_search_list.appendChild(title_search_button_div);
 
                 //제목 버튼 속성 변경 
+                title_search_button.setAttribute("class", "btn btn-outline-primary");
                 title_search_button.setAttribute("id", "title_search_button_" + (i+1));
                 title_search_button.setAttribute("onclick", "get_subtitle_search(" + (i+1) + ")");
                 title_search_button.setAttribute("data-title_search_button_dsd_url", xml_dsd_url);
