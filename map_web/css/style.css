@@ -55,17 +55,19 @@
 			 
 			  #left-sidebar {
 				width: 25%;
-				height: 900px;
+				height: 700px;
 				float: left;
 				margin-right: 10px;
 				border:1px solid #ccc;
 				background-color: white;
+				overflow-x: hidden;
+				overflow-y: auto;
 			}
 
 
 				#chart {
 				width: 48%; 
-				height: 900px; 	
+				height: 700px; 	
 				float: left;/*레이아웃이 왼쪽부터 시작되게 붙이기*/ 
 				margin-bottom: 20px; /*외곽선이 밑으로 부터 얼마나 떨어져 있는가?*/
 				border:1px solid #ccc;
@@ -77,7 +79,7 @@
 
 				#map {
 				width: 25%; 
-				height: 900px;
+				height: 700px;
 				float: right; 
 				margin-bottom: 20px;  
 				border:1px solid #ccc;
