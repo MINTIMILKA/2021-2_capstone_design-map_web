@@ -55,7 +55,7 @@
 			 
 			  #left-sidebar {
 				width: 25%;
-				height: 600px;
+				height: 900px;
 				float: left;
 				margin-right: 10px;
 				border:1px solid #ccc;
@@ -65,7 +65,7 @@
 
 				#chart {
 				width: 48%; 
-				height: 600px; 	
+				height: 900px; 	
 				float: left;/*레이아웃이 왼쪽부터 시작되게 붙이기*/ 
 				margin-bottom: 20px; /*외곽선이 밑으로 부터 얼마나 떨어져 있는가?*/
 				border:1px solid #ccc;
@@ -75,7 +75,7 @@
 
 				#map {
 				width: 25%; 
-				height: 600px;
+				height: 900px;
 				float: right; 
 				margin-bottom: 20px;  
 				border:1px solid #ccc;
@@ -84,5 +84,12 @@
 
 			#footer {
 				clear:both;	 /*사진 주위로 글이 안붙음, 줄바꿈됨*/
-				border:1px solid #ccc;
+				width: 100%;
+				height: 100%;
+				border-top: 2px solid #222;
+				margin-top: 15px;
+				float:left;
+				font-size:15px;
+				color:#666;
+
 			}
